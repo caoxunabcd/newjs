@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 24px;
+        }
+        #box{
+            background: -webkit-linear-gradient(top left, rgb(145, 255, 0),pink);
+            border: 3px solid gainsboro;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #btn{
+            padding-left: 150px;
+            padding-top: 100px;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        #record{
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 15px;
+        }
+        .record-block{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+        <div id="btn">
+            <button id="btn1" onclick="question()">开始答题</button>
+            <button id="btn2" onclick="recording()">答题记录</button>
+        </div>
+        <div id="record">
+
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var btn1 = document.getElementById("btn1");
+    var ans = document.createElement("div");
+    var record = document.getElementById("record");
+    var score;
+    var i = 0;
+    var recordstr = [];
+    //消除覆盖原盒子的ans节点
+    function ret(){
+        ans.removeChild(x);
+        box.removeChild(ans);
+    }
+
+    function question(){
+        //设置一个新的节点，点击开始答题按钮后此节点覆盖原来的盒子
+        record.innerHTML = "";
+        var n = 30;
+        score = 0;
+        var i = 0;
+        ans.style.background = "-webkit-linear-gradient(top left, pink, white)";
+        ans.style.width = "500px";
+        ans.style.height = "500px";
+        ans.style.textAlign = "center";
+        ans.style.position = "absolute";
+        ans.style.top = "0";
+        ans.style.margin = "10px auto";
+        box.appendChild(ans);
+        ans.setAttribute("id","ans");
+        var x = document.createElement("div");
+        x.setAttribute("id","x");
+        x.style.width = "400px";
+        x.style.height = "400px";
+        x.style.textAlign = "left";
+        x.style.margin = "0 auto";
+        x.style.marginTop = "50px";
+
+        //ans节点加了个子节点x
+        ans.appendChild(x);
+
+
+        //设置需要的节点内容
+        //倒计时，得分
+        //加法算式
+        //提交按钮
+        //输入框
+        var x6 = document.createElement("div");
+        var x1 = document.createElement("div");
+        var x2 = document.createElement("div");
+        var x3 = document.createElement("div");
+        var x4 = document.createElement("button");
+        var x5 = document.createElement("input");
+
+        x.appendChild(x6);
+        x.appendChild(x1);
+        x.appendChild(x2);
+        x.appendChild(x3);
+        x.appendChild(x5);
+        x.appendChild(x4);
+        var t = x.children;
+        
+
+        x6.innerHTML = "倒计时：" + "<span>" + n + "s</span>";
+
+
+        var timeId = setInterval(function(){
+            if(n == 0){
+                ret();
+            }
+            n = n - 1;
+            x6.innerHTML = "倒计时：" + "<span>" + n + "s</span>";
+        },1000)
+
+        x2.innerHTML = "得分：" + score;
+
+
+        var num1 = parseInt(Math.random()*100);
+        var num2 = parseInt(Math.random()*100);
+
+        x4.style.display = "block";
+        x3.innerHTML = num1 + "+" + num2 + "=";
+        x3.style.display = "inline";
+        x5.style.display = "inline";
+        x4.innerHTML = "提交答案";
+        x4.onclick = function(){
+            if(num1 + num2 == parseInt(x5.value)){
+                recordstr[i] = num1 + "+" + num2 + "=" + x5.value +" 结果：对";
+                score = score + 10;
+                x2.innerHTML = "得分：" + score;
+                num1 = parseInt(Math.random()*100);
+                num2 = parseInt(Math.random()*100);
+                x3.innerHTML = num1 + "+" + num2 + "=";
+                x5.value = "";
+                x5.focus();
+                i++;
+            }else{
+                recordstr[i] = num1 + "+" + num2 + "=" + x5.value +" 结果：错";
+                num1 = parseInt(Math.random()*100);
+                num2 = parseInt(Math.random()*100);
+                x3.innerHTML = num1 + "+" + num2 + "=";
+                x5.value = "";
+                x5.focus();
+                i++;
+            }
+        }
+    }
+    function recording(){
+        for(var j = 0;j <recordstr.length; j ++){
+            record.innerHTML += "<div class='record-block'>" + recordstr[j] + "</div>"; 
+        }
+        recordstr = [];
+    }
+</script>
+</html>
