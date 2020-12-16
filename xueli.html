@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .prev,
+        .next {
+            position: absolute;
+            top: 222px;
+            left: 2%;
+            width: 106px;
+            height: 106px;
+            opacity: 0.5;
+        }
+
+        .next {
+            left: auto;
+            right: 2%;
+        }
+
+        body{
+            background-image: url("images/3.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        button{
+            font-size: 24px;
+        }
+        #box{
+            background: -webkit-linear-gradient(top left, rgb(145, 255, 0),pink);
+            border: 3px solid gainsboro;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 24px;
+        }
+        #btn{
+            padding-left: 150px;
+            padding-top: 100px;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        #record{
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 15px;
+        }
+        .record-block{
+            display: block;
+        }
+        #first{
+            height: 30px;
+            border: hidden;
+            width: 110px;
+            outline-style: none;
+        }
+        #second{
+            height: 30px;
+            border: hidden;
+            width: 110px;
+            outline-style: none;
+        }
+        .button{
+            background: -webkit-linear-gradient(left, white, pink);
+            width: 200px;
+            height: 50px;
+            color: lightblue;
+            float: left;
+            position: relative;
+        }
+        #tipUsername{
+            width: 280px;
+            height: 20px;
+            color: lightblue;
+            font-size: 10px;
+        }
+        #tipPassword{
+            width: 200px;
+            height: 20px;
+            color:lightblue;
+            font-size: 10px;
+        }
+        .con{
+            float: left;
+            position: relative;
+            text-align: center;
+            line-height: 30px;
+            width: 80px;
+            height: 30px;
+            font-size: 15px;
+        }
+        .don{
+            background:-webkit-linear-gradient(left, white, pink);
+            border:1px solid lightgray;
+            width: 200px;
+        }
+        #tipMessage{
+            width: 200px;
+            height: 100px;
+            color: lightskyblue;
+            font-size: 20px;
+            position: relative;
+            float: left;
+        }
+        #form{
+            position: relative;
+            width: 200px;
+        }
+        #login{
+            width: 300px;
+            height: 200px;
+            float: left;
+            position: relative;
+        }
+        #newreport{
+            background: lightskyblue;
+            border: 3px solid gainsboro;
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+            float: left;
+            text-align: center;
+        }
+        #btn1{
+            font-size: 24px;
+        }
+        #btn2{
+            font-size: 24px;
+        }
+        #btn{
+            padding-left: 150px;
+            padding-top: 100px;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        #record{
+            width: 300px;
+            height: 200px;
+            overflow: auto;
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 15px;
+        }
+        .record-block{
+            display: block;
+        }
+        .title{
+            color: lightskyblue;
+            width: 450px;
+            font-size: 30px;
+        }
+        .carousel{
+            width: 800px;
+            height: 40px;
+            background: blanchedalmond;
+            border: 1px solid white;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .banner {
+            height: 600px;
+            width: 1200px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .banner .img{
+            width: 1200px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login">
+
+        <form action="" id="form">
+            <div class="don">
+                <div class="con">
+                    用  户  名
+                </div>
+                <input id="first" type="text"  onfocus="a()" onblur="b()">
+            </div>
+            <div id="tipUsername">
+                    
+            </div>
+            <div class="don">
+                <div class="con">
+                    设置密码
+                </div>
+                <input type="password" id="second" onfocus="c()" onblur="e()">
+            </div>
+            <div id="tipPassword">
+
+            </div>
+        </form>
+
+
+        <button class="button" onclick="p()">立即注册</button>
+    </div>
+    <div id="tipMessage">
+            
+    </div>
+    <div id="box">
+
+        <div id="btn">
+            <button id="btn1" onclick="question()">开始游戏</button>
+            <button id="btn2" onclick="recording()">得分记录</button>
+        </div>
+        <div id="record">
+
+        </div>
+    </div>
+
+
+    <div class="carousel">
+        <div class="title">
+            注册后点击按钮即可开始游戏!
+        </div>
+    </div>
+    <div class="banner">
+        <img class="img" src="images/1.jpg"/>
+        <img src="images/prev.png" alt="上一页" class="prev" onmouseover="onmouseoverstop()" onclick="jpgdown()" onmouseout="sss()"/>
+        <img src="images/next.png" alt="下一页" class="next" onmouseover="onmouseoverstop()" onclick="jpgadd()" onmouseout="sss()"/>
+    </div>
+</body>
+<script>
+    var z = document.getElementById("tipUsername");
+    var y = document.getElementById("tipPassword");
+    function jpgadd(){
+        num ++;
+        if(num>3){
+            num = 0;
+        }
+        img.src = "images/" + array[num];
+    }
+    function jpgdown(){
+        num -- ;
+        if(num<0){
+            num = 3;
+        }
+        img.src = "images/" + array[num];
+    }
+    function a(){
+        z.innerText = "支持中文格式";
+    }
+    function b(){
+        var first = document.getElementById("first");
+        if(first.value.length != 0){
+            z.innerText = "";
+        }else{
+            z.innerText = "用户名不能为空";
+        }
+    }
+    function c(){
+        y.innerText = "建议使用两种字符组合";
+    }
+    function e(){
+        var second = document.getElementById("second");
+        console.log(second.value);
+        if(second.value.length != 0){
+            y.innerText = "";
+        }else{
+            y.innerText = "密码不能为空";
+        }
+    }
+    function p(){
+        var tipMessage = document.getElementById("tipMessage");
+        tipMessage.innerHTML = "<p>注册成功!</p>" + "<p>用户名:" + first.value + "</p>" + "<p>密码:" + second.value + "</p>";
+        alert("注册成功！");
+    }
+    var title = document.getElementsByClassName("title");
+    title[0].style.marginLeft = "0";
+    var intervalId = setInterval(function(){
+        var marginLeft = parseInt(title[0].style.marginLeft);
+        if(marginLeft >= 800){
+            title[0].style.marginLeft = "0";
+            marginLeft = 0;
+        }
+        title[0].style.marginLeft = (marginLeft + 1) + "px";
+    },10)
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var btn1 = document.getElementById("btn1");
+    var ans = document.createElement("div");
+    var record = document.getElementById("record");
+    var score;
+    var i = 0;
+    var recordstr = [];
+    //消除覆盖原盒子的ans节点
+    function ret(){
+        ans.removeChild(x);
+        box.removeChild(ans);
+    }
+
+    function question(){
+        //设置一个新的节点，点击开始答题按钮后此节点覆盖原来的盒子
+        console.log(first.value.length,second.value.length);
+        if(first.value.length!=0&&second.value.length!=0){
+            record.innerHTML = "";
+            var n = 30;
+            score = 0;
+            var i = 0;
+            ans.style.background = "-webkit-linear-gradient(top left, pink, white)";
+            ans.style.width = "500px";
+            ans.style.height = "500px";
+            ans.style.textAlign = "center";
+            ans.style.position = "absolute";
+            ans.style.top = "0";
+            ans.style.margin = "10px auto";
+            box.appendChild(ans);
+            ans.setAttribute("id","ans");
+            var x = document.createElement("div");
+            x.setAttribute("id","x");
+            x.style.width = "400px";
+            x.style.height = "400px";
+            x.style.textAlign = "left";
+            x.style.margin = "0 auto";
+            x.style.marginTop = "50px";
+
+            //ans节点加了个子节点x
+            ans.appendChild(x);
+
+
+            //设置需要的节点内容
+            //倒计时，得分
+            //加法算式
+            //提交按钮
+            //输入框
+            var x6 = document.createElement("div");
+            var x1 = document.createElement("div");
+            var x2 = document.createElement("div");
+            var x3 = document.createElement("div");
+            var x4 = document.createElement("button");
+            var x5 = document.createElement("input");
+
+            x.appendChild(x6);
+            x.appendChild(x1);
+            x.appendChild(x2);
+            x.appendChild(x3);
+            x.appendChild(x5);
+            x.appendChild(x4);
+            var t = x.children;
+            
+
+            x6.innerHTML = "倒计时：" + "<span>" + n + "s</span>";
+
+
+            var timeId = setInterval(function(){
+                if(n == 0){
+                    ret();
+                }
+                n = n - 1;
+                x6.innerHTML = "倒计时：" + "<span>" + n + "s</span>";
+            },1000)
+
+            x2.innerHTML = "得分：" + score;
+
+
+            var num1 = parseInt(Math.random()*100);
+            var num2 = parseInt(Math.random()*100);
+
+            x4.style.display = "block";
+            x3.innerHTML = num1 + "+" + num2 + "=";
+            x3.style.display = "inline";
+            x5.style.display = "inline";
+            x4.innerHTML = "提交答案";
+            x4.onclick = function(){
+                if(num1 + num2 == parseInt(x5.value)){
+                    recordstr[i] = num1 + "+" + num2 + "=" + x5.value +" 结果：对";
+                    score = score + 10;
+                    x2.innerHTML = "得分：" + score;
+                    num1 = parseInt(Math.random()*100);
+                    num2 = parseInt(Math.random()*100);
+                    x3.innerHTML = num1 + "+" + num2 + "=";
+                    x5.value = "";
+                    x5.focus();
+                    i++;
+                }else{
+                    recordstr[i] = num1 + "+" + num2 + "=" + x5.value +" 结果：错";
+                    num1 = parseInt(Math.random()*100);
+                    num2 = parseInt(Math.random()*100);
+                    x3.innerHTML = num1 + "+" + num2 + "=";
+                    x5.value = "";
+                    x5.focus();
+                    i++;
+                }
+            }
+        }else{
+            alert("请先注册!");
+        }
+        function recording(){
+            for(var j = 0;j <recordstr.length; j ++){
+                record.innerHTML += "<div class='record-block'>" + recordstr[j] + "</div>"; 
+            }
+            recordstr = [];
+        }
+    }
+    var num = 0;
+    var array=["5.jpg","1.jpg","2.jpg","4.jpg"];
+    var img = document.getElementsByClassName("img")[0];
+    var sss = setInterval(function(){
+        num ++;
+        if(num>3){
+            num = 0;
+        }
+        img.src = "images/" + array[num];
+    },1000);
+    function onmouseoverstop(){
+        clearInterval(sss);
+    }
+</script>
+</html>
